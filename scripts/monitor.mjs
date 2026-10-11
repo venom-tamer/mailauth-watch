@@ -36,7 +36,7 @@ async function main() {
   const subscribers = await loadSubscribers();
   const state = readJson(STATE_FILE, KEY) || {};
   const mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || 'MailAuth Watch <alerts@example.invalid>', outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
-  const ctx = { siteUrl: (env.SITE_URL || 'https://example.invalid').replace(/\/$/, ''), portalUrl: env.PORTAL_URL || '(customer portal link in your receipt email)' };
+  const ctx = { siteUrl: (env.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev').replace(/\/$/, ''), portalUrl: env.PORTAL_URL || '(customer portal link in your receipt email)' };
   const limits = {};
   if (env.MAX_DOMAINS) limits.maxDomains = Number(env.MAX_DOMAINS);
   if (env.MAX_EMAILS_PER_RUN) limits.maxEmailsPerRun = Number(env.MAX_EMAILS_PER_RUN);

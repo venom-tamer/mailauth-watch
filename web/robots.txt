@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://example.invalid/sitemap.xml
+Sitemap: https://mailauth-watch.t-hit-architects.workers.dev/sitemap.xml

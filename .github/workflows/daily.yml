@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SITE_URL: ${{ vars.SITE_URL }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev' }}
       PORTAL_URL: ${{ vars.PORTAL_URL }}
       MAIL_FROM: ${{ vars.MAIL_FROM }}
       POLAR_SERVER: ${{ vars.POLAR_SERVER }}

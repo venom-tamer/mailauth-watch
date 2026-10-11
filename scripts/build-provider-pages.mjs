@@ -14,7 +14,7 @@ import { createNodeResolver } from '../src/node/resolver.js';
 import { log } from '../src/node/log.js';
 
 const root = new URL('../', import.meta.url);
-const SITE = (process.env.SITE_URL || 'https://example.invalid').replace(/\/$/, '');
+const SITE = (process.env.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev').replace(/\/$/, '');
 const DATA_FILE = new URL(process.env.DATA_FILE || 'data/providers.json', root);
 
 export async function measureProviders(resolver, providers = PROVIDERS) {
