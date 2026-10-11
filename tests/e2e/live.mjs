@@ -29,6 +29,13 @@ await check('sitemap lists provider pages', async () => {
   assert.match(xml, /\/providers\//);
 });
 
+if (process.env.EXPECT_CHECKOUT === '1') {
+  await check('checkout link is configured', async () => {
+    const js = await (await fetch(BASE + '/assets/config.js')).text();
+    assert.match(js, /checkoutUrl: 'https:\/\/([a-z0-9-]+\.)*polar\.sh\//);
+  });
+}
+
 const browser = await chromium.launch({ args: ['--no-sandbox'] });
 async function page(name, fn) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });

@@ -4,13 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       url: { description: 'Site URL (defaults to repo variable SITE_URL)', required: false }
+      expect_checkout: { description: 'Fail if no Polar checkout link is configured', type: boolean, default: false }
   schedule: [{ cron: '41 6 * * *' }]
 permissions: { contents: read }
 jobs:
   live:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env: { SITE_URL: "${{ inputs.url || vars.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev' }}", SHOT_DIR: shots }
+    env: { SITE_URL: "${{ inputs.url || vars.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev' }}", SHOT_DIR: shots, EXPECT_CHECKOUT: "${{ inputs.expect_checkout && '1' || '' }}" }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

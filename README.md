@@ -2,6 +2,8 @@
 
 Free SPF, DKIM and DMARC checker with an SPF DNS-lookup counter, plus optional paid monitoring that emails you when a domain's email authentication changes or breaks.
 
+**Live:** https://mailauth-watch.t-hit-architects.workers.dev
+
 - **Checker:** runs entirely in the browser over DNS-over-HTTPS (Cloudflare, Google fallback). No backend, nothing stored.
 - **Provider pages:** each email provider's SPF include is measured from live DNS daily, with change history.
 - **Monitoring:** a daily GitHub Actions job audits subscribed domains and sends welcome, change-alert and weekly emails. Payments via Polar.
