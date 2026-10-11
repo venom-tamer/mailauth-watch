@@ -2,14 +2,15 @@ name: live-check
 # Tests the deployed site with real DNS. Runs after deploys settle, daily, and on demand.
 on:
   workflow_dispatch:
+    inputs:
+      url: { description: 'Site URL (defaults to repo variable SITE_URL)', required: false }
   schedule: [{ cron: '41 6 * * *' }]
 permissions: { contents: read }
 jobs:
   live:
-    if: vars.SITE_URL != ''
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env: { SITE_URL: '${{ vars.SITE_URL }}', SHOT_DIR: shots }
+    env: { SITE_URL: "${{ inputs.url || vars.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev' }}", SHOT_DIR: shots }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
