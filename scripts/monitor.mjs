@@ -27,15 +27,28 @@ async function loadSubscribers() {
 
 const KEY = env.STATE_KEY || '';
 
+// GitHub Actions annotation: counts and modes only (never domains, emails or ids), so the
+// owner and operator can see a run's outcome without downloading logs.
+function annotate(kind, title, text) {
+  if (env.GITHUB_ACTIONS) console.log(`::${kind} title=${title}::${String(text).replace(/[\r\n]+/g, ' ')}`);
+}
+
 async function main() {
   if (env.REQUIRE_ENCRYPTION === '1' && !KEY) {
     if (env.POLAR_ACCESS_TOKEN) { log('error', 'STATE_KEY secret is missing: refusing to store customer data unencrypted in a public repository'); process.exitCode = 1; }
     else log('warn', 'STATE_KEY not set and payments not connected; skipping monitoring');
+    annotate(env.POLAR_ACCESS_TOKEN ? 'error' : 'warning', 'Monitor', 'STATE_KEY secret not set');
     return;
   }
   const subscribers = await loadSubscribers();
   const state = readJson(STATE_FILE, KEY) || {};
-  const mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || 'MailAuth Watch <alerts@example.invalid>', outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
+  let mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || 'MailAuth Watch <alerts@example.invalid>', outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
+  if (mailer.mode === 'outbox' && env.REQUIRE_ENCRYPTION === '1') {
+    // In the public repo the outbox would publish customer addresses, and treating it as "sent"
+    // would mean real customers never get their welcome email. Hold mail instead: sends fail,
+    // state does not advance, and they go out on the first run after SMTP is configured.
+    mailer = { mode: 'held', send: async () => ({ ok: false, error: 'email not configured (set SMTP_USER and SMTP_PASS secrets)' }) };
+  }
   const ctx = { siteUrl: (env.SITE_URL || 'https://mailauth-watch.t-hit-architects.workers.dev').replace(/\/$/, ''), portalUrl: env.PORTAL_URL || '(customer portal link in your receipt email)' };
   const limits = {};
   if (env.MAX_DOMAINS) limits.maxDomains = Number(env.MAX_DOMAINS);
@@ -47,7 +60,9 @@ async function main() {
   writeText(STATE_FILE, JSON.stringify(next, null, 2) + '\n', KEY);
   writeText(`${LOG_DIR}/monitor-latest.json`, JSON.stringify({ summary, mailMode: mailer.mode, events }, null, 2) + '\n', KEY);
   log('info', 'monitor run complete', { ...summary, mailMode: mailer.mode });
+  const em = summary.emails || {};
+  annotate(summary.errors ? 'error' : 'notice', 'Monitor', `payments=${env.SUBSCRIBERS_FILE ? 'file' : env.POLAR_ACCESS_TOKEN ? `polar-${env.POLAR_SERVER === 'production' ? 'production' : 'sandbox'}` : 'not-connected'} subscribers=${summary.subscribers} valid=${summary.validSubscribers} checked=${summary.domainsChecked} dnsErrors=${summary.domainsErrored} emails: welcome=${em.welcome} alert=${em.alert} digest=${em.digest} failed=${em.failed} mail=${mailer.mode}${summary.aborted ? ` aborted=${summary.aborted}` : ''}`);
   if (summary.errors) process.exitCode = 1; // fails the workflow so GitHub emails the owner
 }
 
-main().catch((e) => { log('error', 'monitor crashed', { error: String(e?.message || e) }); process.exit(1); });
+main().catch((e) => { log('error', 'monitor crashed', { error: String(e?.message || e) }); annotate('error', 'Monitor crashed', String(e?.message || e).slice(0, 200)); process.exit(1); });
