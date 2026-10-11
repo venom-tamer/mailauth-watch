@@ -218,3 +218,19 @@ test('SMTP client speaks AUTH PLAIN over the socket, dot-stuffs, and never leaks
   await m.send({ to: 'c@d.e', subject: 's', text: 't' });
   assert.equal(got.to, 'c@d.e');
 });
+
+test('vault encrypts round-trip, rejects wrong keys and short keys, and redacts domains stably', async () => {
+  const { encrypt, decrypt, readJson, writeText, redactDomain } = await import('../../src/node/vault.js');
+  const key = 'a-long-random-state-key-123';
+  const blob = encrypt('{"subs":{"x":{"domain":"secret.com"}}}', key);
+  assert.ok(!blob.includes('secret.com'));
+  assert.equal(JSON.parse(decrypt(blob, key)).subs.x.domain, 'secret.com');
+  assert.throws(() => decrypt(blob, 'wrong-key-wrong-key-wrong'));
+  assert.throws(() => encrypt('x', 'short'));
+  const dir = mkdtempSync(`${tmpdir()}/vault-`);
+  writeText(`${dir}/state.json`, '{"a":1}', key);
+  assert.ok(!readdirSync(dir).includes('state.json'));
+  assert.deepEqual(readJson(`${dir}/state.json`, key), { a: 1 });
+  assert.equal(redactDomain('shop.com'), redactDomain('shop.com'));
+  assert.ok(!redactDomain('shop.com').includes('shop'));
+});

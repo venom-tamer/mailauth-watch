@@ -1,0 +1,28 @@
+name: weekly-report
+on:
+  schedule: [{ cron: '0 7 * * 1' }]
+  workflow_dispatch: {}
+permissions: { contents: write }
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      POLAR_SERVER: ${{ vars.POLAR_SERVER }}
+      POLAR_ACCESS_TOKEN: ${{ secrets.POLAR_ACCESS_TOKEN }}
+      STATE_KEY: ${{ secrets.STATE_KEY }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      MAIL_FROM: ${{ vars.MAIL_FROM }}
+      OWNER_EMAIL: ${{ vars.OWNER_EMAIL }}
+      LOG_DIR: ops/logs
+      REPORT_DIR: ops/reports
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: |
+          git config user.name "mailauth-bot"; git config user.email "actions@users.noreply.github.com"
+          git fetch origin ops-state && git worktree add ops origin/ops-state && (cd ops && git checkout -B ops-state) || git worktree add --orphan -b ops-state ops
+      - run: npm run report >> "$GITHUB_STEP_SUMMARY"
+      - run: cd ops && git add -A && (git diff --cached --quiet || git commit -qm "report $(date -u +%F)") && git push -q origin ops-state

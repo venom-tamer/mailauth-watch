@@ -1,0 +1,59 @@
+# Daily: refresh provider SPF data/pages, then run customer monitoring.
+# Monitoring state lives on the `ops-state` branch, encrypted with the STATE_KEY secret, so customer
+# data never reaches the site or the public repo. Console output redacts domains.
+# Any error fails the run, and GitHub emails the repository owner.
+name: daily
+on:
+  schedule: [{ cron: '17 6 * * *' }]
+  workflow_dispatch: {}
+permissions: { contents: write }
+concurrency: { group: daily, cancel-in-progress: false }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      PORTAL_URL: ${{ vars.PORTAL_URL }}
+      MAIL_FROM: ${{ vars.MAIL_FROM }}
+      POLAR_SERVER: ${{ vars.POLAR_SERVER }}
+      POLAR_DOMAIN_FIELD: ${{ vars.POLAR_DOMAIN_FIELD }}
+      MAX_EMAILS_PER_RUN: ${{ vars.MAX_EMAILS_PER_RUN }}
+      MAX_DOMAINS: ${{ vars.MAX_DOMAINS }}
+      POLAR_ACCESS_TOKEN: ${{ secrets.POLAR_ACCESS_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      STATE_KEY: ${{ secrets.STATE_KEY }}
+      REQUIRE_ENCRYPTION: '1'
+      STATE_FILE: ops/monitor-state.json
+      LOG_DIR: ops/logs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Check out ops-state branch
+        run: |
+          git config user.name "mailauth-bot"; git config user.email "actions@users.noreply.github.com"
+          if git ls-remote --exit-code origin ops-state >/dev/null; then
+            git worktree add ops origin/ops-state && (cd ops && git checkout -B ops-state)
+          else
+            git worktree add --orphan -b ops-state ops
+          fi
+      - name: Refresh provider pages
+        run: npm run build:providers
+      - name: Monitor customer domains
+        id: monitor
+        continue-on-error: true
+        run: npm run monitor
+      - name: Save ops state
+        if: always()
+        run: |
+          cd ops && git add -A && (git diff --cached --quiet || git commit -qm "ops state $(date -u +%F)") && git push -q origin ops-state
+      - name: Publish refreshed provider pages
+        run: |
+          git add data/providers.json web/providers web/sitemap.xml web/robots.txt
+          git diff --cached --quiet || (git commit -qm "provider data $(date -u +%F)" && git push -q)
+      - name: Fail if monitoring had errors
+        if: steps.monitor.outcome == 'failure'
+        run: exit 1

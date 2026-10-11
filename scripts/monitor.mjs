@@ -6,8 +6,9 @@
 //   SUBSCRIBERS_FILE (JSON array, for local testing instead of Polar), STATE_FILE, LOG_DIR
 //   DRY_RUN=1 writes emails to LOG_DIR/outbox instead of sending
 //   MAX_DOMAINS, MAX_EMAILS_PER_RUN
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { dirname } from 'node:path';
+//   STATE_KEY: encrypts state and logs (required when REQUIRE_ENCRYPTION=1, e.g. in a public repo)
+import { readFileSync } from 'node:fs';
+import { readJson, writeText, redactDomain } from '../src/node/vault.js';
 import { runMonitor } from '../src/node/monitor.js';
 import { listActiveSubscribers, polarBase } from '../src/node/polar.js';
 import { createMailer } from '../src/node/mailer.js';
@@ -24,9 +25,16 @@ async function loadSubscribers() {
   return listActiveSubscribers({ token: env.POLAR_ACCESS_TOKEN, baseUrl: polarBase(env), domainField: env.POLAR_DOMAIN_FIELD || 'domain' });
 }
 
+const KEY = env.STATE_KEY || '';
+
 async function main() {
+  if (env.REQUIRE_ENCRYPTION === '1' && !KEY) {
+    if (env.POLAR_ACCESS_TOKEN) { log('error', 'STATE_KEY secret is missing: refusing to store customer data unencrypted in a public repository'); process.exitCode = 1; }
+    else log('warn', 'STATE_KEY not set and payments not connected; skipping monitoring');
+    return;
+  }
   const subscribers = await loadSubscribers();
-  const state = existsSync(STATE_FILE) ? JSON.parse(readFileSync(STATE_FILE, 'utf8')) : {};
+  const state = readJson(STATE_FILE, KEY) || {};
   const mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || 'MailAuth Watch <alerts@example.invalid>', outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
   const ctx = { siteUrl: (env.SITE_URL || 'https://example.invalid').replace(/\/$/, ''), portalUrl: env.PORTAL_URL || '(customer portal link in your receipt email)' };
   const limits = {};
@@ -34,11 +42,10 @@ async function main() {
   if (env.MAX_EMAILS_PER_RUN) limits.maxEmailsPerRun = Number(env.MAX_EMAILS_PER_RUN);
 
   const { state: next, summary, events } = await runMonitor({ subscribers, state, resolver: createNodeResolver(), mailer, ctx, limits });
-  for (const e of events) log(e.level, e.msg, e);
-  mkdirSync(dirname(STATE_FILE), { recursive: true });
-  writeFileSync(STATE_FILE, JSON.stringify(next, null, 2) + '\n');
-  mkdirSync(LOG_DIR, { recursive: true });
-  writeFileSync(`${LOG_DIR}/monitor-latest.json`, JSON.stringify({ summary, mailMode: mailer.mode, events }, null, 2) + '\n');
+  // Console output can be public (Actions logs): never print domains or subscription ids there.
+  for (const e of events) log(e.level, e.msg, { ...e, domain: e.domain && redactDomain(e.domain), sub: e.sub && '[redacted]', to: e.to && '[redacted]' });
+  writeText(STATE_FILE, JSON.stringify(next, null, 2) + '\n', KEY);
+  writeText(`${LOG_DIR}/monitor-latest.json`, JSON.stringify({ summary, mailMode: mailer.mode, events }, null, 2) + '\n', KEY);
   log('info', 'monitor run complete', { ...summary, mailMode: mailer.mode });
   if (summary.errors) process.exitCode = 1; // fails the workflow so GitHub emails the owner
 }
