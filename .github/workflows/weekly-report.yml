@@ -3,6 +3,7 @@ on:
   schedule: [{ cron: '0 7 * * 1' }]
   workflow_dispatch: {}
 permissions: { contents: write }
+concurrency: { group: ops-state, cancel-in-progress: false }  # shared with daily: both push ops-state
 jobs:
   report:
     runs-on: ubuntu-latest
