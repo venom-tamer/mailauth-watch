@@ -8,6 +8,7 @@
   "scripts": {
     "test": "node --test tests/unit/*.test.js",
     "test:e2e": "node tests/e2e/run.mjs",
+    "test:live": "node tests/e2e/live.mjs",
     "serve": "npx --yes serve@14.2.6 web -l 4173",
     "build:providers": "node scripts/build-provider-pages.mjs",
     "build:config": "node scripts/build-config.mjs",

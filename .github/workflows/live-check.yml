@@ -1,0 +1,21 @@
+name: live-check
+# Tests the deployed site with real DNS. Runs after deploys settle, daily, and on demand.
+on:
+  workflow_dispatch:
+  schedule: [{ cron: '41 6 * * *' }]
+permissions: { contents: read }
+jobs:
+  live:
+    if: vars.SITE_URL != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env: { SITE_URL: '${{ vars.SITE_URL }}', SHOT_DIR: shots }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p shots && npm install --no-save playwright@1.56.1 && npx playwright install --with-deps chromium
+      - run: node tests/e2e/live.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: live-screenshots, path: shots, retention-days: 7 }
