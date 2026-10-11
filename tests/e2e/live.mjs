@@ -32,7 +32,7 @@ await check('sitemap lists provider pages', async () => {
 if (process.env.EXPECT_CHECKOUT === '1') {
   await check('checkout link is configured', async () => {
     const js = await (await fetch(BASE + '/assets/config.js')).text();
-    assert.match(js, /checkoutUrl: 'https:\/\/([a-z0-9-]+\.)*polar\.sh\//);
+    assert.match(js, /["']?checkoutUrl["']?: ["']https:\/\/([a-z0-9-]+\.)*polar\.sh\//);
   });
 }
 
