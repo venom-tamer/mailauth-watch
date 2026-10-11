@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zendesk SPF include: 1 DNS lookup (measured 2026-10-11)</title><meta name="description" content="include:mail.zendesk.com uses 1 of SPF&#39;s 10 DNS lookups, measured live on 2026-10-11. See its full include chain, combined totals with Google Workspace and Microsoft 365, and change history.">
+<link rel="canonical" href="https://example.invalid/providers/zendesk.html"><link rel="stylesheet" href="/assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456d6'/%3E%3Cpath d='M7 11l9 7 9-7v11H7z' fill='white'/%3E%3C/svg%3E">
+</head><body>
+<header class="top"><div class="wrap row"><a class="brand" href="/"><span class="logo" aria-hidden="true"></span>MailAuth Watch</a>
+<nav aria-label="Main"><a href="/providers/">Provider SPF costs</a><a href="/#pricing">Monitoring</a></nav></div></header>
+<main id="main" class="wrap" style="padding-top:24px">
+<h1>Zendesk SPF: how many DNS lookups does it cost?</h1>
+<div class="card"><p style="font-size:20px;margin:0"><code>include:mail.zendesk.com</code> costs <strong>1 of your 10</strong> SPF DNS lookups.</p>
+<p class="fine">Measured from live DNS on 2026-10-11. Re-measured automatically every day.</p></div>
+<h2>Add Zendesk to your SPF record</h2>
+<p>Add this term before the <code>~all</code> or <code>-all</code> at the end of your existing SPF record. Don't publish a second SPF record: a domain may have only one.</p>
+<div class="record">include:mail.zendesk.com</div>
+<h2>What the include resolves to</h2>
+<ul class="tree"><li><span style="padding-left:0px">mail.zendesk.com</span><span class="cost"></span></li></ul>
+<p class="fine">mail.zendesk.com</p><div class="record">v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all</div>
+<h2>Combined with a mailbox provider</h2>
+<div class="table-scroll"><table class="data"><thead><tr><th>Combination</th><th>Lookups</th><th>Budget</th></tr></thead><tbody><tr><td>Zendesk + Google Workspace</td><td class="num">2</td><td>8 left</td></tr><tr><td>Zendesk + Microsoft 365 / Exchange Online</td><td class="num">2</td><td>8 left</td></tr><tr><td>Zendesk + Zoho Mail</td><td class="num">3</td><td>7 left</td></tr><tr><td>Zendesk + Proton Mail</td><td class="num">3</td><td>7 left</td></tr><tr><td>Zendesk + Fastmail</td><td class="num">2</td><td>8 left</td></tr><tr><td>Zendesk + GoDaddy email</td><td class="num">4</td><td>6 left</td></tr><tr><td>Zendesk + Namecheap Private Email</td><td class="num">5</td><td>5 left</td></tr><tr><td>Zendesk + Hostinger email</td><td class="num">4</td><td>6 left</td></tr></tbody></table></div>
+<p class="fine">Your own record's other terms (a, mx, other includes) add to these totals. <a href="/">Check your whole domain</a> for the exact number.</p>
+<h2>Change history</h2>
+<div class="table-scroll"><table class="data"><thead><tr><th>Date</th><th>Lookups</th><th>Record</th></tr></thead><tbody><tr><td>2026-10-11</td><td class="num">1</td><td><code>v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all</code></td></tr></tbody></table></div>
+<div class="upsell"><h3>Providers change these records</h3><p>When an include grows, your SPF can pass the 10-lookup limit without you changing anything. MailAuth Watch re-checks your domain daily and emails you when that happens.</p><a class="btn" href="/#pricing">See monitoring</a></div></main>
+<footer class="wrap foot"><p><a href="/">Free SPF/DKIM/DMARC checker</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+</body></html>

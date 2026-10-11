@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.invalid/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/google-workspace.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/microsoft-365.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/zoho-mail.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/proton-mail.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/fastmail.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/godaddy.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/namecheap-private-email.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/hostinger.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/sendgrid.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/mailgun.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/amazon-ses.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/mailchimp.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/mandrill.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/brevo.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/mailjet.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/postmark.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/sparkpost.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/salesforce.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/zendesk.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/freshdesk.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/providers/shopify.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/privacy.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://example.invalid/terms.html</loc><lastmod>2026-10-11</lastmod></url>
+</urlset>

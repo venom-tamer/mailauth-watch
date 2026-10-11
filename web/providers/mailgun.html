@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mailgun SPF include: 5 DNS lookups (measured 2026-10-11)</title><meta name="description" content="include:mailgun.org uses 5 of SPF&#39;s 10 DNS lookups, measured live on 2026-10-11. See its full include chain, combined totals with Google Workspace and Microsoft 365, and change history.">
+<link rel="canonical" href="https://example.invalid/providers/mailgun.html"><link rel="stylesheet" href="/assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456d6'/%3E%3Cpath d='M7 11l9 7 9-7v11H7z' fill='white'/%3E%3C/svg%3E">
+</head><body>
+<header class="top"><div class="wrap row"><a class="brand" href="/"><span class="logo" aria-hidden="true"></span>MailAuth Watch</a>
+<nav aria-label="Main"><a href="/providers/">Provider SPF costs</a><a href="/#pricing">Monitoring</a></nav></div></header>
+<main id="main" class="wrap" style="padding-top:24px">
+<h1>Mailgun SPF: how many DNS lookups does it cost?</h1>
+<div class="card"><p style="font-size:20px;margin:0"><code>include:mailgun.org</code> costs <strong>5 of your 10</strong> SPF DNS lookups.</p>
+<p class="fine">Measured from live DNS on 2026-10-11. Re-measured automatically every day.</p></div>
+<h2>Add Mailgun to your SPF record</h2>
+<p>Add this term before the <code>~all</code> or <code>-all</code> at the end of your existing SPF record. Don't publish a second SPF record: a domain may have only one.</p>
+<div class="record">include:mailgun.org</div>
+<h2>What the include resolves to</h2>
+<ul class="tree"><li><span style="padding-left:0px">mailgun.org</span><span class="cost"></span></li><li><span style="padding-left:16px">└ _spf.mailgun.org</span><span class="cost"></span></li><li><span style="padding-left:32px">└ _spf1.mailgun.org</span><span class="cost"></span></li><li><span style="padding-left:32px">└ _spf2.mailgun.org</span><span class="cost"></span></li><li><span style="padding-left:16px">└ _spf.eu.mailgun.org</span><span class="cost"></span></li></ul>
+<p class="fine">mailgun.org</p><div class="record">v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all</div><p class="fine">_spf.mailgun.org</p><div class="record">v=spf1 include:_spf1.mailgun.org include:_spf2.mailgun.org ~all</div><p class="fine">_spf1.mailgun.org</p><div class="record">v=spf1 ip4:159.135.224.0/20 ip4:69.72.32.0/20 ip4:204.220.90.0/23 ip4:204.220.92.0/22 ~all</div><p class="fine">_spf2.mailgun.org</p><div class="record">v=spf1 ip4:161.38.192.0/20 ip4:143.55.224.0/21 ip4:143.55.232.0/22 ip4:159.112.240.0/20 ip4:198.244.48.0/20 ip4:204.220.168.0/21 ip4:204.220.176.0/20 ~all</div><p class="fine">_spf.eu.mailgun.org</p><div class="record">v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ip4:198.244.60.0/22 ip4:204.220.160.0/20 ~all</div>
+<h2>Combined with a mailbox provider</h2>
+<div class="table-scroll"><table class="data"><thead><tr><th>Combination</th><th>Lookups</th><th>Budget</th></tr></thead><tbody><tr><td>Mailgun + Google Workspace</td><td class="num">6</td><td>4 left</td></tr><tr><td>Mailgun + Microsoft 365 / Exchange Online</td><td class="num">6</td><td>4 left</td></tr><tr><td>Mailgun + Zoho Mail</td><td class="num">7</td><td>3 left</td></tr><tr><td>Mailgun + Proton Mail</td><td class="num">7</td><td>3 left</td></tr><tr><td>Mailgun + Fastmail</td><td class="num">6</td><td>4 left</td></tr><tr><td>Mailgun + GoDaddy email</td><td class="num">8</td><td>2 left</td></tr><tr><td>Mailgun + Namecheap Private Email</td><td class="num">9</td><td>1 left</td></tr><tr><td>Mailgun + Hostinger email</td><td class="num">8</td><td>2 left</td></tr></tbody></table></div>
+<p class="fine">Your own record's other terms (a, mx, other includes) add to these totals. <a href="/">Check your whole domain</a> for the exact number.</p>
+<h2>Change history</h2>
+<div class="table-scroll"><table class="data"><thead><tr><th>Date</th><th>Lookups</th><th>Record</th></tr></thead><tbody><tr><td>2026-10-11</td><td class="num">5</td><td><code>v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all</code></td></tr></tbody></table></div>
+<div class="upsell"><h3>Providers change these records</h3><p>When an include grows, your SPF can pass the 10-lookup limit without you changing anything. MailAuth Watch re-checks your domain daily and emails you when that happens.</p><a class="btn" href="/#pricing">See monitoring</a></div></main>
+<footer class="wrap foot"><p><a href="/">Free SPF/DKIM/DMARC checker</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+</body></html>

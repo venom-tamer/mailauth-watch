@@ -1,0 +1,713 @@
+{
+  "generatedAt": "2026-10-11",
+  "providers": [
+    {
+      "id": "google-workspace",
+      "ok": true,
+      "name": "Google Workspace",
+      "kind": "mailbox",
+      "include": "_spf.google.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4864::/56 ip6:2404:6800:4864::/56 ip6:2607:f8b0:4864::/56 ip6:2800:3f0:4864::/56 ip6:2a00:1450:4864::/56 ip6:2c0f:fb50:4864::/56 ~all",
+      "chain": [
+        {
+          "domain": "_spf.google.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4864::/56 ip6:2404:6800:4864::/56 ip6:2607:f8b0:4864::/56 ip6:2800:3f0:4864::/56 ip6:2a00:1450:4864::/56 ip6:2c0f:fb50:4864::/56 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4864::/56 ip6:2404:6800:4864::/56 ip6:2607:f8b0:4864::/56 ip6:2800:3f0:4864::/56 ip6:2a00:1450:4864::/56 ip6:2c0f:fb50:4864::/56 ~all\"]",
+          "record": "v=spf1 ip4:74.125.0.0/16 ip4:209.85.128.0/17 ip6:2001:4860:4864::/56 ip6:2404:6800:4864::/56 ip6:2607:f8b0:4864::/56 ip6:2800:3f0:4864::/56 ip6:2a00:1450:4864::/56 ip6:2c0f:fb50:4864::/56 ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "microsoft-365",
+      "ok": true,
+      "name": "Microsoft 365 / Exchange Online",
+      "kind": "mailbox",
+      "include": "spf.protection.outlook.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all",
+      "chain": [
+        {
+          "domain": "spf.protection.outlook.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all\"]",
+          "record": "v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "zoho-mail",
+      "ok": true,
+      "name": "Zoho Mail",
+      "kind": "mailbox",
+      "include": "zohomail.com",
+      "cost": 2,
+      "record": "v=spf1 include:spf.zohomail.com -all",
+      "chain": [
+        {
+          "domain": "zohomail.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:spf.zohomail.com -all"
+        },
+        {
+          "domain": "spf.zohomail.com",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:136.143.188.0/24 ip4:136.143.184.0/24 ip4:8.40.222.250/31 ip4:8.39.54.250/31 ip4:165.173.182.0/24 ip4:165.173.180.0/24 ip4:8.39.54.240/29 ip4:8.40.222.240/29 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 2,
+          "sig": "[\"v=spf1 include:spf.zohomail.com -all\",\"v=spf1 ip4:136.143.188.0/24 ip4:136.143.184.0/24 ip4:8.40.222.250/31 ip4:8.39.54.250/31 ip4:165.173.182.0/24 ip4:165.173.180.0/24 ip4:8.39.54.240/29 ip4:8.40.222.240/29 -all\"]",
+          "record": "v=spf1 include:spf.zohomail.com -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "proton-mail",
+      "ok": true,
+      "name": "Proton Mail",
+      "kind": "mailbox",
+      "include": "_spf.protonmail.ch",
+      "cost": 2,
+      "record": "v=spf1 ip4:185.70.40.0/24 ip4:185.70.41.0/24 ip4:185.70.43.0/24 ip4:79.135.106.0/24 ip4:79.135.107.0/24 ip4:109.224.244.0/24 include:_spf2.protonmail.ch ~all",
+      "chain": [
+        {
+          "domain": "_spf.protonmail.ch",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:185.70.40.0/24 ip4:185.70.41.0/24 ip4:185.70.43.0/24 ip4:79.135.106.0/24 ip4:79.135.107.0/24 ip4:109.224.244.0/24 include:_spf2.protonmail.ch ~all"
+        },
+        {
+          "domain": "_spf2.protonmail.ch",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:85.9.206.169 ip4:85.9.210.45 ip4:37.187.220.204 ip4:51.83.17.38 ip4:57.129.93.249 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 2,
+          "sig": "[\"v=spf1 ip4:185.70.40.0/24 ip4:185.70.41.0/24 ip4:185.70.43.0/24 ip4:79.135.106.0/24 ip4:79.135.107.0/24 ip4:109.224.244.0/24 include:_spf2.protonmail.ch ~all\",\"v=spf1 ip4:85.9.206.169 ip4:85.9.210.45 ip4:37.187.220.204 ip4:51.83.17.38 ip4:57.129.93.249 ~all\"]",
+          "record": "v=spf1 ip4:185.70.40.0/24 ip4:185.70.41.0/24 ip4:185.70.43.0/24 ip4:79.135.106.0/24 ip4:79.135.107.0/24 ip4:109.224.244.0/24 include:_spf2.protonmail.ch ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "fastmail",
+      "ok": true,
+      "name": "Fastmail",
+      "kind": "mailbox",
+      "include": "spf.messagingengine.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:103.168.172.128/27 ip4:202.12.124.128/27 ip4:204.75.18.128/27 -all",
+      "chain": [
+        {
+          "domain": "spf.messagingengine.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:103.168.172.128/27 ip4:202.12.124.128/27 ip4:204.75.18.128/27 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:103.168.172.128/27 ip4:202.12.124.128/27 ip4:204.75.18.128/27 -all\"]",
+          "record": "v=spf1 ip4:103.168.172.128/27 ip4:202.12.124.128/27 ip4:204.75.18.128/27 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "godaddy",
+      "ok": true,
+      "name": "GoDaddy email",
+      "kind": "mailbox",
+      "include": "secureserver.net",
+      "cost": 3,
+      "record": "v=spf1 include:spf-0.secureserver.net -all",
+      "chain": [
+        {
+          "domain": "secureserver.net",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:spf-0.secureserver.net -all"
+        },
+        {
+          "domain": "spf-0.secureserver.net",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:64.202.168.0/24 ip4:97.74.135.0/24 ip4:72.167.238.0/24 ip4:72.167.234.0/24 ip4:72.167.218.0/24 ip4:68.178.252.0/24 ip4:68.178.213.0/24 ip4:216.69.139.0/24 ip4:208.109.80.0/24 ip4:92.204.81.0/24 ip4:198.71.224.0/19 ip4:184.168.224.0/24 ip4:184.168.200.0/24 ip4:184.168.131.0/24 ip4:184.168.128.0/24 ip4:92.204.65.0/28 ip4:182.50.132.0/24 ip4:173.201.192.0/23 ip4:72.167.168.0/24 ip4:92.204.71.0/24 ip4:132.148.124.0/24 ip4:72.167.172.0/24 ip4:188.121.52.0/24 ip4:188.121.53.0/24 ip4:52.89.65.132 ip4:54.214.222.76 ip4:54.184.82.65 ip4:52.26.164.15 ip4:68.178.181.0/24 ip4:50.63.8.0/22 ip4:208.109.194.0/24 ip4:80.237.138.192/26 ip4:92.204.86.0/24 include:spf.protection.outlook.com -all"
+        },
+        {
+          "domain": "spf.protection.outlook.com",
+          "depth": 2,
+          "status": "ok",
+          "record": "v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 3,
+          "sig": "[\"v=spf1 include:spf-0.secureserver.net -all\",\"v=spf1 ip4:64.202.168.0/24 ip4:97.74.135.0/24 ip4:72.167.238.0/24 ip4:72.167.234.0/24 ip4:72.167.218.0/24 ip4:68.178.252.0/24 ip4:68.178.213.0/24 ip4:216.69.139.0/24 ip4:208.109.80.0/24 ip4:92.204.81.0/24 ip4:198.71.224.0/19 ip4:184.168.224.0/24 ip4:184.168.200.0/24 ip4:184.168.131.0/24 ip4:184.168.128.0/24 ip4:92.204.65.0/28 ip4:182.50.132.0/24 ip4:173.201.192.0/23 ip4:72.167.168.0/24 ip4:92.204.71.0/24 ip4:132.148.124.0/24 ip4:72.167.172.0/24 ip4:188.121.52.0/24 ip4:188.121.53.0/24 ip4:52.89.65.132 ip4:54.214.222.76 ip4:54.184.82.65 ip4:52.26.164.15 ip4:68.178.181.0/24 ip4:50.63.8.0/22 ip4:208.109.194.0/24 ip4:80.237.138.192/26 ip4:92.204.86.0/24 include:spf.protection.outlook.com -all\",\"v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/15 ip4:52.102.0.0/16 ip4:52.103.0.0/17 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/51 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all\"]",
+          "record": "v=spf1 include:spf-0.secureserver.net -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "namecheap-private-email",
+      "ok": true,
+      "name": "Namecheap Private Email",
+      "kind": "mailbox",
+      "include": "spf.privateemail.com",
+      "cost": 4,
+      "record": "v=spf1 include:ips1.privateemail.com include:fbrelay.privateemail.com include:spf.jellyfish.systems ~all",
+      "chain": [
+        {
+          "domain": "spf.privateemail.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:ips1.privateemail.com include:fbrelay.privateemail.com include:spf.jellyfish.systems ~all"
+        },
+        {
+          "domain": "ips1.privateemail.com",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:198.54.122.128/27 ip4:198.54.127.32/27 ip4:66.29.159.48/28 ip4:198.54.118.192/27 ip4:198.54.122.96/27 ip4:198.54.127.96/27 ~all"
+        },
+        {
+          "domain": "fbrelay.privateemail.com",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:162.0.218.228 ip4:162.0.218.229 ip4:162.0.218.230 ip4:162.0.218.231 ~all"
+        },
+        {
+          "domain": "spf.jellyfish.systems",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 -ip4:198.177.127.200/30 ip4:63.250.43.78/31 ip4:63.250.43.80/28 ip4:63.250.43.96/27 ip4:104.207.68.0/24 ip4:198.54.122.64/29 ip4:198.54.122.72/31 ip4:198.54.127.64/27 ip4:198.54.127.128/26 ip4:198.177.127.128/28 ip4:198.177.127.192/27 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 4,
+          "sig": "[\"v=spf1 include:ips1.privateemail.com include:fbrelay.privateemail.com include:spf.jellyfish.systems ~all\",\"v=spf1 ip4:198.54.122.128/27 ip4:198.54.127.32/27 ip4:66.29.159.48/28 ip4:198.54.118.192/27 ip4:198.54.122.96/27 ip4:198.54.127.96/27 ~all\",\"v=spf1 ip4:162.0.218.228 ip4:162.0.218.229 ip4:162.0.218.230 ip4:162.0.218.231 ~all\",\"v=spf1 -ip4:198.177.127.200/30 ip4:63.250.43.78/31 ip4:63.250.43.80/28 ip4:63.250.43.96/27 ip4:104.207.68.0/24 ip4:198.54.122.64/29 ip4:198.54.122.72/31 ip4:198.54.127.64/27 ip4:198.54.127.128/26 ip4:198.177.127.128/28 ip4:198.177.127.192/27 ~all\"]",
+          "record": "v=spf1 include:ips1.privateemail.com include:fbrelay.privateemail.com include:spf.jellyfish.systems ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "hostinger",
+      "ok": true,
+      "name": "Hostinger email",
+      "kind": "mailbox",
+      "include": "_spf.mail.hostinger.com",
+      "cost": 3,
+      "record": "v=spf1 include:relay.mail.hostinger.com include:relay.mailchannels.net ~all",
+      "chain": [
+        {
+          "domain": "_spf.mail.hostinger.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:relay.mail.hostinger.com include:relay.mailchannels.net ~all"
+        },
+        {
+          "domain": "relay.mail.hostinger.com",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:148.222.54.0/24 ip4:148.222.55.0/24 ip4:189.12.192.0/22 ip6:2a02:4780:5a:c0de::/64 ip6:2a02:4780:5b:c0de::/64 ~all"
+        },
+        {
+          "domain": "relay.mailchannels.net",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:23.83.208.0/20 ip4:35.85.190.185/32 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 3,
+          "sig": "[\"v=spf1 include:relay.mail.hostinger.com include:relay.mailchannels.net ~all\",\"v=spf1 ip4:148.222.54.0/24 ip4:148.222.55.0/24 ip4:189.12.192.0/22 ip6:2a02:4780:5a:c0de::/64 ip6:2a02:4780:5b:c0de::/64 ~all\",\"v=spf1 ip4:23.83.208.0/20 ip4:35.85.190.185/32 ~all\"]",
+          "record": "v=spf1 include:relay.mail.hostinger.com include:relay.mailchannels.net ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "sendgrid",
+      "ok": true,
+      "name": "SendGrid",
+      "kind": "sender",
+      "include": "sendgrid.net",
+      "cost": 2,
+      "record": "v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all",
+      "chain": [
+        {
+          "domain": "sendgrid.net",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all"
+        },
+        {
+          "domain": "ab.sendgrid.net",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 2,
+          "sig": "[\"v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all\",\"v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all\"]",
+          "record": "v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "mailgun",
+      "ok": true,
+      "name": "Mailgun",
+      "kind": "sender",
+      "include": "mailgun.org",
+      "cost": 5,
+      "record": "v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all",
+      "chain": [
+        {
+          "domain": "mailgun.org",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all"
+        },
+        {
+          "domain": "_spf.mailgun.org",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 include:_spf1.mailgun.org include:_spf2.mailgun.org ~all"
+        },
+        {
+          "domain": "_spf1.mailgun.org",
+          "depth": 2,
+          "status": "ok",
+          "record": "v=spf1 ip4:159.135.224.0/20 ip4:69.72.32.0/20 ip4:204.220.90.0/23 ip4:204.220.92.0/22 ~all"
+        },
+        {
+          "domain": "_spf2.mailgun.org",
+          "depth": 2,
+          "status": "ok",
+          "record": "v=spf1 ip4:161.38.192.0/20 ip4:143.55.224.0/21 ip4:143.55.232.0/22 ip4:159.112.240.0/20 ip4:198.244.48.0/20 ip4:204.220.168.0/21 ip4:204.220.176.0/20 ~all"
+        },
+        {
+          "domain": "_spf.eu.mailgun.org",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ip4:198.244.60.0/22 ip4:204.220.160.0/20 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 5,
+          "sig": "[\"v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all\",\"v=spf1 include:_spf1.mailgun.org include:_spf2.mailgun.org ~all\",\"v=spf1 ip4:159.135.224.0/20 ip4:69.72.32.0/20 ip4:204.220.90.0/23 ip4:204.220.92.0/22 ~all\",\"v=spf1 ip4:161.38.192.0/20 ip4:143.55.224.0/21 ip4:143.55.232.0/22 ip4:159.112.240.0/20 ip4:198.244.48.0/20 ip4:204.220.168.0/21 ip4:204.220.176.0/20 ~all\",\"v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ip4:198.244.60.0/22 ip4:204.220.160.0/20 ~all\"]",
+          "record": "v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "amazon-ses",
+      "ok": true,
+      "name": "Amazon SES",
+      "kind": "sender",
+      "include": "amazonses.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:199.255.192.0/22 ip4:199.127.232.0/22 ip4:54.240.0.0/18 ip4:69.169.224.0/20 ip4:23.249.208.0/20 ip4:23.251.224.0/19 ip4:76.223.176.0/20 ip4:54.240.64.0/18 ip4:76.223.128.0/19 ip4:216.221.160.0/19 ip4:206.55.144.0/20 ip4:24.110.64.0/18 ip4:98.77.0.0/16 -all",
+      "chain": [
+        {
+          "domain": "amazonses.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:199.255.192.0/22 ip4:199.127.232.0/22 ip4:54.240.0.0/18 ip4:69.169.224.0/20 ip4:23.249.208.0/20 ip4:23.251.224.0/19 ip4:76.223.176.0/20 ip4:54.240.64.0/18 ip4:76.223.128.0/19 ip4:216.221.160.0/19 ip4:206.55.144.0/20 ip4:24.110.64.0/18 ip4:98.77.0.0/16 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:199.255.192.0/22 ip4:199.127.232.0/22 ip4:54.240.0.0/18 ip4:69.169.224.0/20 ip4:23.249.208.0/20 ip4:23.251.224.0/19 ip4:76.223.176.0/20 ip4:54.240.64.0/18 ip4:76.223.128.0/19 ip4:216.221.160.0/19 ip4:206.55.144.0/20 ip4:24.110.64.0/18 ip4:98.77.0.0/16 -all\"]",
+          "record": "v=spf1 ip4:199.255.192.0/22 ip4:199.127.232.0/22 ip4:54.240.0.0/18 ip4:69.169.224.0/20 ip4:23.249.208.0/20 ip4:23.251.224.0/19 ip4:76.223.176.0/20 ip4:54.240.64.0/18 ip4:76.223.128.0/19 ip4:216.221.160.0/19 ip4:206.55.144.0/20 ip4:24.110.64.0/18 ip4:98.77.0.0/16 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "mailchimp",
+      "ok": true,
+      "name": "Mailchimp",
+      "kind": "sender",
+      "include": "servers.mcsv.net",
+      "cost": 1,
+      "record": "v=spf1 ip4:205.201.128.0/20 ip4:198.2.128.0/18 ip4:148.105.0.0/16 -all",
+      "chain": [
+        {
+          "domain": "servers.mcsv.net",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:205.201.128.0/20 ip4:198.2.128.0/18 ip4:148.105.0.0/16 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:205.201.128.0/20 ip4:198.2.128.0/18 ip4:148.105.0.0/16 -all\"]",
+          "record": "v=spf1 ip4:205.201.128.0/20 ip4:198.2.128.0/18 ip4:148.105.0.0/16 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "mandrill",
+      "ok": true,
+      "name": "Mailchimp Transactional (Mandrill)",
+      "kind": "sender",
+      "include": "spf.mandrillapp.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.0/24 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all",
+      "chain": [
+        {
+          "domain": "spf.mandrillapp.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.0/24 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.0/24 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all\"]",
+          "record": "v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.0/24 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "brevo",
+      "ok": true,
+      "name": "Brevo (Sendinblue)",
+      "kind": "sender",
+      "include": "spf.brevo.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:185.41.28.0/22 ip4:94.143.16.0/21 ip4:185.24.144.0/22 ip4:153.92.224.0/19 ip4:213.32.128.0/18 ip4:185.107.232.0/22 ip4:77.32.128.0/18 ip4:77.32.192.0/19 ip4:212.146.192.0/18 ip4:172.246.0.0/18 -all",
+      "chain": [
+        {
+          "domain": "spf.brevo.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:185.41.28.0/22 ip4:94.143.16.0/21 ip4:185.24.144.0/22 ip4:153.92.224.0/19 ip4:213.32.128.0/18 ip4:185.107.232.0/22 ip4:77.32.128.0/18 ip4:77.32.192.0/19 ip4:212.146.192.0/18 ip4:172.246.0.0/18 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:185.41.28.0/22 ip4:94.143.16.0/21 ip4:185.24.144.0/22 ip4:153.92.224.0/19 ip4:213.32.128.0/18 ip4:185.107.232.0/22 ip4:77.32.128.0/18 ip4:77.32.192.0/19 ip4:212.146.192.0/18 ip4:172.246.0.0/18 -all\"]",
+          "record": "v=spf1 ip4:185.41.28.0/22 ip4:94.143.16.0/21 ip4:185.24.144.0/22 ip4:153.92.224.0/19 ip4:213.32.128.0/18 ip4:185.107.232.0/22 ip4:77.32.128.0/18 ip4:77.32.192.0/19 ip4:212.146.192.0/18 ip4:172.246.0.0/18 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "mailjet",
+      "ok": true,
+      "name": "Mailjet",
+      "kind": "sender",
+      "include": "spf.mailjet.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:45.14.148.0/22 ~all",
+      "chain": [
+        {
+          "domain": "spf.mailjet.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:45.14.148.0/22 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:45.14.148.0/22 ~all\"]",
+          "record": "v=spf1 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:45.14.148.0/22 ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "postmark",
+      "ok": true,
+      "name": "Postmark",
+      "kind": "sender",
+      "include": "spf.mtasv.net",
+      "cost": 1,
+      "record": "v=spf1 ip4:50.31.156.96/27 ip4:104.245.209.192/26 ip4:50.31.205.0/24 ip4:147.160.158.0/24 -all",
+      "chain": [
+        {
+          "domain": "spf.mtasv.net",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:50.31.156.96/27 ip4:104.245.209.192/26 ip4:50.31.205.0/24 ip4:147.160.158.0/24 -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:50.31.156.96/27 ip4:104.245.209.192/26 ip4:50.31.205.0/24 ip4:147.160.158.0/24 -all\"]",
+          "record": "v=spf1 ip4:50.31.156.96/27 ip4:104.245.209.192/26 ip4:50.31.205.0/24 ip4:147.160.158.0/24 -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "sparkpost",
+      "ok": true,
+      "name": "SparkPost",
+      "kind": "sender",
+      "include": "sparkpostmail.com",
+      "cost": 2,
+      "record": "v=spf1 exists:%{i}._spf.sparkpostmail.com ~all",
+      "chain": [
+        {
+          "domain": "sparkpostmail.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 exists:%{i}._spf.sparkpostmail.com ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 2,
+          "sig": "[\"v=spf1 exists:%{i}._spf.sparkpostmail.com ~all\"]",
+          "record": "v=spf1 exists:%{i}._spf.sparkpostmail.com ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "salesforce",
+      "ok": true,
+      "name": "Salesforce",
+      "kind": "sender",
+      "include": "_spf.salesforce.com",
+      "cost": 2,
+      "record": "v=spf1 exists:%{i}._spf.mta.salesforce.com -all",
+      "chain": [
+        {
+          "domain": "_spf.salesforce.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 exists:%{i}._spf.mta.salesforce.com -all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 2,
+          "sig": "[\"v=spf1 exists:%{i}._spf.mta.salesforce.com -all\"]",
+          "record": "v=spf1 exists:%{i}._spf.mta.salesforce.com -all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "zendesk",
+      "ok": true,
+      "name": "Zendesk",
+      "kind": "sender",
+      "include": "mail.zendesk.com",
+      "cost": 1,
+      "record": "v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all",
+      "chain": [
+        {
+          "domain": "mail.zendesk.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all\"]",
+          "record": "v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "freshdesk",
+      "ok": true,
+      "name": "Freshdesk",
+      "kind": "sender",
+      "include": "email.freshdesk.com",
+      "cost": 7,
+      "record": "v=spf1 include:sendgrid.net include:fdspfus.freshemail.io include:fdspfeuc.freshemail.io include:fdspfind.freshemail.io include:fdspfaus.freshemail.io ~all",
+      "chain": [
+        {
+          "domain": "email.freshdesk.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 include:sendgrid.net include:fdspfus.freshemail.io include:fdspfeuc.freshemail.io include:fdspfind.freshemail.io include:fdspfaus.freshemail.io ~all"
+        },
+        {
+          "domain": "sendgrid.net",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all"
+        },
+        {
+          "domain": "ab.sendgrid.net",
+          "depth": 2,
+          "status": "ok",
+          "record": "v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all"
+        },
+        {
+          "domain": "fdspfus.freshemail.io",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:34.198.193.174 ip4:34.202.174.188 ip4:34.199.167.230 ip4:52.203.5.138 ip4:3.91.171.64/28 ip4:3.219.176.96/29 ip4:3.222.0.112/29 ip4:3.222.0.24/29 ip4:3.222.0.88/29 ip4:3.235.255.160/29 ip4:3.238.137.128/30 ip4:44.192.35.0/24 ip4:18.235.53.110 ip4:54.159.173.91 ~all"
+        },
+        {
+          "domain": "fdspfeuc.freshemail.io",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:35.158.71.15 ip4:35.158.67.243 ip4:3.120.181.192/28 ip4:3.76.65.248/29 ip4:3.72.201.96/29 ip4:3.120.181.204/30 ip4:18.156.147.178 ip4:18.158.161.97 ip4:3.64.95.16/29 ip4:3.65.246.112/29 ip4:3.72.33.56/29 ip4:18.153.184.112/29 ip4:18.153.154.192/29 ip4:18.199.180.160/29 ~all"
+        },
+        {
+          "domain": "fdspfind.freshemail.io",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:13.127.153.86 ip4:52.66.154.99 ip4:13.127.210.61 ip4:3.7.25.40/29 ip4:3.7.196.96 ip4:3.7.127.96 ip4:65.0.37.204/30 ip4:43.204.166.128/29 ip4:65.1.103.160/29 ip4:65.2.2.76/30 ip4:13.200.142.88/29 ip4:13.200.142.120/29 ip4:13.201.195.128/28 ip4:18.96.228.96/29 ip4:18.96.228.100 ~all"
+        },
+        {
+          "domain": "fdspfaus.freshemail.io",
+          "depth": 1,
+          "status": "ok",
+          "record": "v=spf1 ip4:3.25.47.0/29 ip4:52.62.151.40 ip4:13.237.4.248 ip4:13.211.56.237 ip4:3.26.58.204/30 ip4:54.252.22.127 ip4:54.206.207.130 ip4:3.26.82.216/29 ip4:3.26.88.88/29 ip4:3.26.88.244/30 ip4:3.107.43.16/28 ip4:3.106.23.176/29 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 7,
+          "sig": "[\"v=spf1 include:sendgrid.net include:fdspfus.freshemail.io include:fdspfeuc.freshemail.io include:fdspfind.freshemail.io include:fdspfaus.freshemail.io ~all\",\"v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:134.128.64.0/18 ip4:159.26.176.0/20 include:ab.sendgrid.net ~all\",\"v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all\",\"v=spf1 ip4:34.198.193.174 ip4:34.202.174.188 ip4:34.199.167.230 ip4:52.203.5.138 ip4:3.91.171.64/28 ip4:3.219.176.96/29 ip4:3.222.0.112/29 ip4:3.222.0.24/29 ip4:3.222.0.88/29 ip4:3.235.255.160/29 ip4:3.238.137.128/30 ip4:44.192.35.0/24 ip4:18.235.53.110 ip4:54.159.173.91 ~all\",\"v=spf1 ip4:35.158.71.15 ip4:35.158.67.243 ip4:3.120.181.192/28 ip4:3.76.65.248/29 ip4:3.72.201.96/29 ip4:3.120.181.204/30 ip4:18.156.147.178 ip4:18.158.161.97 ip4:3.64.95.16/29 ip4:3.65.246.112/29 ip4:3.72.33.56/29 ip4:18.153.184.112/29 ip4:18.153.154.192/29 ip4:18.199.180.160/29 ~all\",\"v=spf1 ip4:13.127.153.86 ip4:52.66.154.99 ip4:13.127.210.61 ip4:3.7.25.40/29 ip4:3.7.196.96 ip4:3.7.127.96 ip4:65.0.37.204/30 ip4:43.204.166.128/29 ip4:65.1.103.160/29 ip4:65.2.2.76/30 ip4:13.200.142.88/29 ip4:13.200.142.120/29 ip4:13.201.195.128/28 ip4:18.96.228.96/29 ip4:18.96.228.100 ~all\",\"v=spf1 ip4:3.25.47.0/29 ip4:52.62.151.40 ip4:13.237.4.248 ip4:13.211.56.237 ip4:3.26.58.204/30 ip4:54.252.22.127 ip4:54.206.207.130 ip4:3.26.82.216/29 ip4:3.26.88.88/29 ip4:3.26.88.244/30 ip4:3.107.43.16/28 ip4:3.106.23.176/29 ~all\"]",
+          "record": "v=spf1 include:sendgrid.net include:fdspfus.freshemail.io include:fdspfeuc.freshemail.io include:fdspfind.freshemail.io include:fdspfaus.freshemail.io ~all"
+        }
+      ],
+      "stale": false
+    },
+    {
+      "id": "shopify",
+      "ok": true,
+      "name": "Shopify",
+      "kind": "sender",
+      "include": "shops.shopify.com",
+      "cost": 1,
+      "record": "v=spf1 ~all",
+      "chain": [
+        {
+          "domain": "shops.shopify.com",
+          "depth": 0,
+          "status": "ok",
+          "record": "v=spf1 ~all"
+        }
+      ],
+      "checkedAt": "2026-10-11",
+      "firstSeen": "2026-10-11",
+      "history": [
+        {
+          "date": "2026-10-11",
+          "cost": 1,
+          "sig": "[\"v=spf1 ~all\"]",
+          "record": "v=spf1 ~all"
+        }
+      ],
+      "stale": false
+    }
+  ]
+}
