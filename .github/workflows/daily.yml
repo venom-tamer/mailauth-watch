@@ -46,14 +46,18 @@ jobs:
         id: monitor
         continue-on-error: true
         run: npm run monitor
-      - name: Save ops state
-        if: always()
-        run: |
-          cd ops && git add -A && (git diff --cached --quiet || git commit -qm "ops state $(date -u +%F)") && git push -q origin ops-state
       - name: Publish refreshed provider pages
         run: |
           git add data/providers.json web/providers web/sitemap.xml web/robots.txt
           git diff --cached --quiet || (git commit -qm "provider data $(date -u +%F)" && git push -q)
+      - name: Save ops state
+        if: always()
+        run: |
+          cd ops
+          [ -f README.md ] || echo "Encrypted MailAuth Watch operations state. Do not edit by hand." > README.md
+          git add -A
+          git diff --cached --quiet && git rev-parse -q --verify HEAD >/dev/null || git commit -qm "ops state $(date -u +%F)"
+          git push -q origin ops-state
       - name: Fail if monitoring had errors
         if: steps.monitor.outcome == 'failure'
         run: exit 1
