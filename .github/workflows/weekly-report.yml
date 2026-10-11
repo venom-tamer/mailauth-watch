@@ -23,6 +23,11 @@ jobs:
         with: { node-version: 22 }
       - run: |
           git config user.name "mailauth-bot"; git config user.email "actions@users.noreply.github.com"
-          git fetch origin ops-state && git worktree add ops origin/ops-state && (cd ops && git checkout -B ops-state) || git worktree add --orphan -b ops-state ops
+          if git ls-remote --exit-code origin ops-state >/dev/null; then
+            git fetch -q origin ops-state:refs/remotes/origin/ops-state
+            git worktree add -B ops-state ops origin/ops-state
+          else
+            git worktree add --orphan -b ops-state ops
+          fi
       - run: npm run report >> "$GITHUB_STEP_SUMMARY"
       - run: cd ops && git add -A && (git diff --cached --quiet || git commit -qm "report $(date -u +%F)") && git push -q origin ops-state

@@ -7,6 +7,8 @@ import { sendSmtp } from './smtp.js';
 
 export function createMailer({ apiKey, smtp, from, outboxDir, dryRun, fetchImpl = fetch, smtpSend = sendSmtp }) {
   let seq = 0;
+  // Gmail shows app passwords in groups of four; spaces pasted with them are not part of it.
+  if (smtp?.pass) smtp = { ...smtp, user: String(smtp.user || '').trim(), pass: String(smtp.pass).replace(/\s+/g, '') };
   const mode = dryRun ? 'outbox' : smtp?.user && smtp?.pass ? 'smtp' : apiKey ? 'resend' : 'outbox';
   return {
     mode,

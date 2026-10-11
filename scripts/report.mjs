@@ -24,9 +24,10 @@ const md = buildReport({
 const dir = env.REPORT_DIR || 'state/reports';
 writeText(`${dir}/${today}.md`, md, env.STATE_KEY);
 // The report holds revenue and customer counts: send it privately, never print it to public logs.
-if (env.OWNER_EMAIL && env.SMTP_USER && env.SMTP_PASS) {
-  const mailer = createMailer({ smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS }, from: env.MAIL_FROM || env.SMTP_USER });
-  const r = await mailer.send({ to: env.OWNER_EMAIL, subject: `MailAuth Watch weekly report ${today}`, text: md });
+const OWNER = env.OWNER_EMAIL || env.SMTP_USER; // default: the brand Gmail inbox
+if (OWNER && env.SMTP_USER && env.SMTP_PASS) {
+  const mailer = createMailer({ smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS }, from: env.MAIL_FROM || `MailAuth Watch <${env.SMTP_USER}>` });
+  const r = await mailer.send({ to: OWNER, subject: `MailAuth Watch weekly report ${today}`, text: md });
   console.log(r.ok ? 'report emailed to owner' : `report email failed: ${r.error}`);
   if (!r.ok) process.exitCode = 1;
 } else if (env.STATE_KEY) {

@@ -42,7 +42,7 @@ async function main() {
   }
   const subscribers = await loadSubscribers();
   const state = readJson(STATE_FILE, KEY) || {};
-  let mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || 'MailAuth Watch <alerts@example.invalid>', outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
+  let mailer = createMailer({ apiKey: env.RESEND_API_KEY, smtp: { user: env.SMTP_USER, pass: env.SMTP_PASS, host: env.SMTP_HOST || 'smtp.gmail.com', port: Number(env.SMTP_PORT || 465) }, from: env.MAIL_FROM || (env.SMTP_USER ? `MailAuth Watch <${env.SMTP_USER}>` : 'MailAuth Watch <alerts@example.invalid>'), outboxDir: `${LOG_DIR}/outbox`, dryRun: env.DRY_RUN === '1' });
   if (mailer.mode === 'outbox' && env.REQUIRE_ENCRYPTION === '1') {
     // In the public repo the outbox would publish customer addresses, and treating it as "sent"
     // would mean real customers never get their welcome email. Hold mail instead: sends fail,
