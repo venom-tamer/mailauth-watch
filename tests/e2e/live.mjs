@@ -29,6 +29,14 @@ await check('sitemap lists provider pages', async () => {
   assert.match(xml, /\/providers\//);
 });
 
+{
+  // Public info: which Polar environment the site's checkout button points at.
+  const js = await (await fetch(BASE + '/assets/config.js')).text().catch(() => '');
+  const host = (js.match(/https:\/\/([a-z0-9.-]*polar\.sh)\//) || [])[1] || 'none';
+  const kind = host === 'none' ? 'not set' : host.includes('sandbox') ? 'SANDBOX (test mode, no real payments)' : 'production';
+  if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Checkout link::${host} (${kind})`);
+  console.log(`checkout link: ${host} (${kind})`);
+}
 if (process.env.EXPECT_CHECKOUT === '1') {
   await check('checkout link is configured', async () => {
     const js = await (await fetch(BASE + '/assets/config.js')).text();
