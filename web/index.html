@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free SPF, DKIM &amp; DMARC Checker with SPF Lookup Counter | MailAuth Watch</title>
+  <meta name="description" content="Check your domain's SPF, DKIM and DMARC in seconds. See every SPF include and how many of the 10 DNS lookups it costs, get exact records to fix, and get alerted when something breaks.">
+  <link rel="canonical" href="/">
+  <meta property="og:title" content="Free SPF, DKIM & DMARC checker">
+  <meta property="og:description" content="Find out why your email lands in spam, with the exact DNS records to fix it.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456d6'/%3E%3Cpath d='M7 11l9 7 9-7v11H7z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"MailAuth Watch","applicationCategory":"SecurityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free SPF, DKIM and DMARC checker with SPF DNS-lookup counter and change monitoring."}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap row">
+      <a class="brand" href="/"><span class="logo" aria-hidden="true"></span>MailAuth Watch</a>
+      <nav aria-label="Main">
+        <a href="/providers/">Provider SPF costs</a>
+        <a href="#pricing">Monitoring</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <h1>Is your email authentication broken?</h1>
+      <p class="lede">Check SPF, DKIM and DMARC for any domain. See exactly how many of SPF's 10 DNS lookups each service costs, and get the records to fix what's wrong.</p>
+      <form id="check-form" class="check" novalidate>
+        <label for="domain" class="sr-only">Domain name</label>
+        <input id="domain" name="domain" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="yourcompany.com" required>
+        <button type="submit" id="check-btn">Check domain</button>
+      </form>
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <p class="fine">Free, no sign-up. Lookups run in your browser over encrypted DNS (Cloudflare, with Google as fallback); we never store the domains you check.</p>
+    </section>
+
+    <section id="results" class="wrap" aria-live="polite" hidden></section>
+
+    <section class="wrap features" aria-label="What we check">
+      <div><h2>SPF lookup budget</h2><p>Every include, nested include, a, mx and exists is counted against the 10-lookup limit, the most common silent SPF failure.</p></div>
+      <div><h2>DMARC policy</h2><p>Checks the record Gmail, Yahoo and Outlook now require from bulk senders, its policy and its reporting address.</p></div>
+      <div><h2>DKIM keys</h2><p>Probes the selectors your providers use and flags missing, revoked or weak keys.</p></div>
+      <div><h2>Transport security</h2><p>Looks for MTA-STS and TLS-RPT so mail to you can't be quietly downgraded.</p></div>
+    </section>
+
+    <section id="pricing" class="wrap pricing">
+      <h2>Know the moment it breaks</h2>
+      <p>DNS changes, expired DKIM keys and providers adding includes break email authentication without anyone noticing, until customers say your mail went to spam. MailAuth Watch checks your domain every day and emails you when something changes.</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free checker</h3>
+          <p class="price">$0</p>
+          <ul><li>Unlimited manual checks</li><li>SPF lookup tree</li><li>Fix-ready records</li></ul>
+          <a class="btn ghost" href="#main">Check a domain</a>
+        </div>
+        <div class="plan featured">
+          <h3>Watch</h3>
+          <p class="price"><span data-price>$5</span><small>/month per domain</small></p>
+          <ul><li>Daily SPF, DKIM, DMARC and MX checks</li><li>Email alert when anything changes or breaks</li><li>Weekly status digest</li><li>Cancel any time from the billing portal</li></ul>
+          <a class="btn" id="cta-watch" href="#" data-cta="pricing">Start monitoring</a>
+          <p class="fine" id="cta-note" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap faq">
+      <h2>Questions</h2>
+      <details><summary>Why does the SPF 10-lookup limit matter?</summary><p>RFC 7208 caps the DNS lookups an SPF check may make at 10. Each include, a, mx, ptr, exists and redirect costs one, and includes inside includes count too. Past 10, receivers return a permanent error and treat SPF as failed, which can push your mail to spam or get it rejected under DMARC.</p></details>
+      <details><summary>Is it safe to check any domain?</summary><p>Yes. The checker only reads public DNS records, the same ones every mail server reads when it receives your email. It does not connect to your mail servers or send anything.</p></details>
+      <details><summary>Why can't you find my DKIM key?</summary><p>DKIM keys live under a "selector" that only you and your provider know. We probe the selectors common providers use. If yours is custom, the key may still exist; check your provider's DKIM settings.</p></details>
+      <details><summary>What does monitoring check, and how do I cancel?</summary><p>Once a day we run the same checks as this page on your domain. If a record changes or a new problem appears, you get an email listing what changed and how to fix it. Billing runs through our payment provider, Polar, which emails you a link to its customer portal where you can cancel at any time.</p></details>
+      <details><summary>Do you support my provider?</summary><p>The checker works with any provider because it reads standard DNS records. We recognise <a href="/providers/">these services</a> automatically and show their live SPF costs.</p></details>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p><a href="/providers/">Provider SPF lookup costs</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+    <p class="fine">MailAuth Watch reads public DNS only. Results are guidance, not a guarantee of inbox placement.</p>
+  </footer>
+
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>
